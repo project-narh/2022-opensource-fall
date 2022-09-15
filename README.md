@@ -46,3 +46,8 @@ vim -r 파일.확장자
  ## git
 
   대표적으로 사용되는 버전 관리 시스템(Version Control System, VCS)
+
+### git 과 github의 차이점
+  - git은 버전 관리 시스템
+  - github는 git이라는 기술을 기반으로 만든 플랫폼
+    - github에서 만들었는데 마이크로소프트가 인수하였다
