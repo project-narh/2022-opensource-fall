@@ -196,3 +196,12 @@ vim -r 파일.확장자
     - git commint 엔터치고 abc 입력
   13. .gitignore파일의 역할
   14. 브랜치는 언제 만드는가?
+  15. 브랜치 관련 명령어
+    - 현재 현재 생성된 브랜치 목록 확인 : git branch
+    - 브랜치 생성 : git branch (브랜치명)
+    - 브랜치 삭제 : git branch -d (브랜치명)
+    - 브랜치 이동 : git checkout (브랜치명) / git switch (브랜치명)
+    - 브랜치 생성하고 이동 : git checkout -b (브랜치명)
+  16. a라는 브랜치를 b라는 브랜치로 병합할때
+    - 1. B라는 브랜치 checkout
+    - 2. git merge a
