@@ -205,3 +205,62 @@ vim -r 파일.확장자
   16. a라는 브랜치를 b라는 브랜치로 병합할때
     - 1. B라는 브랜치 checkout
     - 2. git merge a
+    
+    # 기말
+  ## 병합의 방법
+  - 1. 일반 병합
+  - 2. Rebase
+  - 각 병합하는 커밋의 아래  커밋들중 중복이 되는것을 제외하고 기준이 되는 브랜치 아래에 재정렬 한다
+  - 그래프가 깔끔해지는 효과가 있다.
+
+  ### 차이점
+   - 일반 병합은 머지 차이가 생기고 그래프가 복잡해진다.
+   - Rebase는 그래프가 깔끔한 장점이 존재
+
+   ### 회사에서는?
+    - 회사마다 다르다.
+    - 다만 대부분에서는 그냥 머지(머지를 한 지점을 확실하게 알기 위해서)
+    - 풀 리퀘스트를 할때 그냥 머지를 하고 진행하면 커밋 이력에 머지 이력이 남아있게 된다.
+    - 다만 회사에서는 이렇게 진행하면 안된다 곤란하다.
+    - 그렇기 떄문에 rebase를 진행하고 풀리퀘스트를 많이 진행하고 있다.
+
+    ### 리베이스 쓰는 경우
+      1. 커밋 메시지 변경하고 싶을때
+      2. 커밋 순서 바꾸고 싶을떄
+      3. 중간 커밋만 삭제하고 싶을때
+      4. 중간에 있는 커밋을 
+
+ - gitk : 깃에서 제공해주는 그래픽 파일
+
+ ## 윈도우와 맥의 엔터 처리 방식
+  - 윈도우는 CRLF 맥은 LF 방식을 사용중
+  - 사용하다보면 워닝이 뜨는 경우 발생 이는 사용자와 다른 사용자의 환경이 달라서 엔더 방식에서 충돌이 생김
+  - git config --global core.autocrlf true 를 활성화 해주면 자동 변경
+  - 자동 변경의 원리는 커밋을 하면 자동으로 LF로 변경 윈도우 사용자가 체크아웃을 하면 CRLF로 변경
+  - 교수님은 그냥 어떤 환경이든 LF으로 변경해서 진행하심(그러면 문제 생길일 없음)
+
+## 마지막 커밋을 수정하는 방법
+ - git commit --amend -m  "내용"(커밋 메시지를 수정하겠다)
+ - 중간에 꺼를 수정하고 싶으면 rebase-i
+ Commands:
+- p, pick <commit> = use commit
+- r, reword <commit> = use commit, but edit the commit message
+- e, edit <commit> = use commit, but stop for amending
+- s, squash <commit> = use commit, but meld into previous commit
+- f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+-                    commit's log message, unless -C is used, in which case
+-                    keep only this commit's message; -c is same as -C but
+-                    opens the editor
+- x, exec <command> = run command (the rest of the line) using shell
+- b, break = stop here (continue rebase later with 'git rebase --continue')
+- d, drop <commit> = remove commit
+- l, label <label> = label current HEAD with a name
+- t, reset <label> = reset HEAD to a label
+- m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+- .       create a merge commit using the original merge commit's
+- .       message (or the oneline, if no original merge commit was
+
+# 깃 활용 공부를 하는 https://git-school.github.io/visualizing-git/
+## 여기서 화살표가 우리가 생각하는 방향과 반대인 이유
+ - 깃은 Linked List로 구현되어 있음
+  - 여기서 화살표는 부모 노드를 가리키는 것
